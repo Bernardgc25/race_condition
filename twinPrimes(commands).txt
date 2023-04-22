@@ -1,0 +1,13 @@
+cd Desktop/CS370/project/P2		     						 						       		-go to file
+gcc -g -Wall -pedantic -g -pthread -o twinPrimes twinPrimes.c                     		-compile(with pthread)
+gcc -g twinPrimes.c -o twinPrimes -lpthread										                -compile(with pthread)
+gcc -g twinPrimes.c -o twinPrimes														 	            -compile (regular code)
+./a.out                                                                                                    		-run program (without arguments)
+time ./twinPrimes -s 100000
+
+
+
+cd Desktop/CS370/project/P2/bScript							  							     -bashscript
+chmod +x <filename>																					 -change bashscript file to executable
+
+rm ~/.ddd/init																							     -reset ddd 

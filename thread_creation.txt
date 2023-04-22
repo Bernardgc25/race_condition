@@ -1,0 +1,17 @@
+  unsigned long int thdErr1, thdErr2, mtxErr;
+                pthread_t thd1, thd2;
+            
+                mtxErr = pthread_mutex_init(&myLock, NULL);
+                if (mtxErr != 0)
+                perror("Mutex initialization failed.\n");
+            
+                // Create two threads.
+                thdErr1 = pthread_create(&thd1, NULL, &twinPrimes, NULL);
+                if (thdErr1 != 0)
+                perror("Thread 1 fail to create.\n");
+                thdErr2 = pthread_create(&thd2, NULL, &twinPrimes, NULL);
+                if (thdErr2 != 0)
+                perror("Thread 2 fail to create.\n");
+                // Wait for threads to complete.
+                pthread_join(thd1, NULL);
+                pthread_join(thd2, NULL);

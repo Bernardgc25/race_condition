@@ -1,0 +1,66 @@
+`#!/bin/bash 
+`
+
+#Bernard Gole Cruz                 CS 370-1001                     
+#bash script to run twinprimes 3 times
+
+
+
+
+#more than 1 parameters in command line
+if [ "$#" -gt 1 ]; then
+    echo -e  "Error, invalid command line arguments. "
+    echo -e  "Usage: ./btwinPrimes <-s|-t>"
+
+#empty parameters in command line
+elif [ "$#" -eq 0 ]; then
+	echo -e  "Usage: ./btwinPrimes <-s|-t>"
+
+#1 parameter in command line
+else
+	#exectute sequential 3 times 
+	if [ "$1" == "-s" ]; then
+        
+        i=0
+        while [ $i -lt 3 ];
+        do 
+            echo "run:$[$i+1]"
+		    gcc -Wall -pedantic -g -pthread -o twinPrimes twinPrimes.c 
+           
+            time ./twinPrimes -s 10000000
+
+            echo -e "#################################################"
+            echo -e
+           
+            i=$[$i+1]
+       done
+  
+
+	#execute parallel 3 times  
+	elif [ "$1" == "-t" ];  then
+     
+        i=0
+        while [ $i -lt 3 ];
+        do 
+            echo "run:$[$i+1]"
+		    gcc -Wall -pedantic -g -pthread -o twinPrimes twinPrimes.c 
+        
+            time ./twinPrimes -t 10000000
+
+            echo -e "#################################################"
+            echo -e
+
+            i=$[$i+1]
+        done
+
+    else
+	   echo -e  "Error, invalid command line arguments. "
+       echo -e  "Usage: ./btwinPrimes <-s|-t>"
+    
+	fi
+
+
+fi
+
+exit
+
